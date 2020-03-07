@@ -19,11 +19,14 @@ namespace WebAddressbookTests
         public void SetupTest()
         {
             app = new ApplicationManager();
+            app.Navigator.OpenHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
         }
 
         [TearDown]
         public void TeardownTest()
         {
+            app.Logout.Logout();
             app.Stop();
         }
     }
