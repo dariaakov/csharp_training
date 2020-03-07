@@ -49,7 +49,7 @@
   <Class Name="WebAddressbookTests.LoginHelper" Collapsed="true">
     <Position X="4.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>AppManager\LoginHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -83,13 +83,6 @@
   </Class>
   <Class Name="WebAddressbookTests.ApplicationManager" Collapsed="true">
     <Position X="2.75" Y="1.75" Width="1.5" />
-    <AssociationLine Name="contactHelper" Type="WebAddressbookTests.ContactHelper" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="4" Y="1.75" />
-        <Point X="4" Y="0.846" />
-        <Point X="4.75" Y="0.846" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="logoutHelper" Type="WebAddressbookTests.LogoutHelper" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="3.438" Y="2.312" />
@@ -106,16 +99,23 @@
         <Point X="4.75" Y="3.846" />
       </Path>
     </AssociationLine>
+    <AssociationLine Name="contactHelper" Type="WebAddressbookTests.ContactHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4" Y="1.75" />
+        <Point X="4" Y="0.846" />
+        <Point X="4.75" Y="0.846" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>hAAEAEAABAAAAAAAAAAAAAaAAAAAAAAAIBCAABAAACA=</HashCode>
       <FileName>AppManager\ApplicationManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="contactHelper" />
-      <Field Name="groupHelper" />
       <Field Name="loginHelper" />
       <Field Name="logoutHelper" />
       <Field Name="navigator" />
+      <Field Name="groupHelper" />
+      <Field Name="contactHelper" />
     </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />

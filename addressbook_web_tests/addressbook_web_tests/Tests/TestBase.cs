@@ -13,7 +13,7 @@ namespace WebAddressbookTests
 {
     public class TestBase
     {
-        private ApplicationManager app;
+        protected ApplicationManager app;
 
         [SetUp]
         public void SetupTest()
