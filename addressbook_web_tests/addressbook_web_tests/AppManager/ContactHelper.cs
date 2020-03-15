@@ -18,17 +18,16 @@ namespace WebAddressbookTests
 
         public ContactHelper Create(ContactData contact)
         {
-            InitContactModification();
+            manager.Navigator.GoToAddNewContactPage();
             FillContactForm(contact);
             SubmitContactCreation();
             manager.Navigator.GoToHomePage();
             return this;
         }
 
-        public ContactHelper Modify(int i, ContactData newData)
+        public ContactHelper Modify(ContactData newData)
         {
-            manager.Navigator.GoToGroupsPage();
-            SelectContact(i);
+            manager.Navigator.GoToHomePage();
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
@@ -48,7 +47,7 @@ namespace WebAddressbookTests
         public ContactHelper RemoveContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
-            driver.SwitchTo().Alert().Accept();
+            //driver.SwitchTo().Alert().Accept();    почему-то аллерт не возникает и удаление происходит без подтверждения
             return this;
         }
 
@@ -60,13 +59,13 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContact(int index)
         {
-            driver.FindElement(By.Id(index.ToString())).Click();
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
             return this;
         }
 
-        public ContactHelper SubmitContactCreation(int index)
+        public ContactHelper SubmitContactCreation()
         {
-            driver.FindElement(By.XPath("(//input[@name='submit[]'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
             return this;
         }
         public ContactHelper FillContactForm(ContactData contact)
@@ -79,9 +78,9 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("lastname")).SendKeys(contact.LastName);
             return this;
         }
-        public ContactHelper InitContactModification(int index)
+        public ContactHelper InitContactModification()
         {
-            driver.FindElement(By.XPath("(//img[@alt='Edit[]'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[4]")).Click();
             return this;
         }
     }
