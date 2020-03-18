@@ -28,12 +28,6 @@ namespace WebAddressbookTests
 
         public GroupHelper Modify(int i, GroupData newData)
         {
-            if ()
-            {
-                return;
-            }
-
-
             manager.Navigator.GoToGroupsPage();
             SelectGroup(i);
             InitGroupModification();
@@ -74,12 +68,8 @@ namespace WebAddressbookTests
 
         public GroupHelper SelectGroup(int index)
         {
-            if (HelperBase.IsElementPresent(By.Id(index)))
-            {
-                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
-                return this;
-            }
-            Create(GroupData group);
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            return this;
         }
 
         public GroupHelper RemoveGroup()
