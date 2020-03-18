@@ -12,6 +12,7 @@ namespace WebAddressbookTests
 {
     public class ContactHelper : HelperBase
     {
+
         public ContactHelper(ApplicationManager manager) : base(manager)
         {
         }
@@ -28,6 +29,10 @@ namespace WebAddressbookTests
         public ContactHelper Modify(ContactData newData)
         {
             manager.Navigator.GoToHomePage();
+            if (!(IsElementPresent(By.XPath("//img[@alt='Edit']"))))
+            {
+                Create(newData);
+            }
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
@@ -38,6 +43,11 @@ namespace WebAddressbookTests
         public ContactHelper Remove(int i)
         {
             manager.Navigator.GoToHomePage();
+            if (!(IsElementPresent(By.XPath("//img[@alt='Edit']"))))
+            {
+                var contact = new ContactData("firstname", "lastname");
+                Create(contact);
+            }
             SelectContact(i);
             RemoveContact();
             manager.Navigator.GoToHomePage();
