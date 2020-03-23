@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -29,10 +30,7 @@ namespace WebAddressbookTests
         public GroupHelper Modify(int i, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
-            if (!(IsElementPresent(By.Name("selected[]"))))
-            {
-                Create(newData);
-            }
+            GroupIsPresent();
             SelectGroup(i);
             InitGroupModification();
             FillGroupForm(newData);
@@ -44,15 +42,21 @@ namespace WebAddressbookTests
         public GroupHelper Remove(int i)
         {
             manager.Navigator.GoToGroupsPage();
-            if (!(IsElementPresent(By.Name("selected[]"))))
-            {
-                var group = new GroupData("name");
-                Create(group);
-            }
+            GroupIsPresent();
             SelectGroup(i);
             RemoveGroup();
             manager.Navigator.GoToGroupsPage();
             return this;
+        }
+
+        private void GroupIsPresent()
+        {
+            if (IsElementPresent(By.Name("selected[]")) == false)
+            {
+                var group = new GroupData("name");
+                Create(group);
+                throw new Exception("Создать группу не удалось");
+            }
         }
 
         public GroupHelper InitGroupCreation()

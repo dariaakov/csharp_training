@@ -29,10 +29,7 @@ namespace WebAddressbookTests
         public ContactHelper Modify(ContactData newData)
         {
             manager.Navigator.GoToHomePage();
-            if (!(IsElementPresent(By.XPath("//img[@alt='Edit']"))))
-            {
-                Create(newData);
-            }
+            ContactIsPresent();
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
@@ -40,18 +37,24 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper Remove(int i)
+        public ContactHelper Remove()
         {
             manager.Navigator.GoToHomePage();
-            if (!(IsElementPresent(By.XPath("//img[@alt='Edit']"))))
-            {
-                var contact = new ContactData("firstname", "lastname");
-                Create(contact);
-            }
-            SelectContact(i);
+            ContactIsPresent();
+            SelectContact();
             RemoveContact();
             manager.Navigator.GoToHomePage();
             return this;
+        }
+
+        public void ContactIsPresent()
+        {
+            if (IsElementPresent(By.XPath("//img[@alt='Edit']")) == false)
+            {
+                var contact = new ContactData("firstname", "lastname");
+                Create(contact);
+                throw new Exception("Создать контакт не удалось");
+            }
         }
 
         public ContactHelper RemoveContact()
@@ -67,9 +70,9 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactHelper SelectContact(int index)
+        public ContactHelper SelectContact()
         {
-            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
             return this;
         }
 
