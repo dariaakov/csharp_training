@@ -29,7 +29,6 @@ namespace WebAddressbookTests
         public ContactHelper Modify(ContactData newData)
         {
             manager.Navigator.GoToHomePage();
-            ContactIsPresent();
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
@@ -40,7 +39,6 @@ namespace WebAddressbookTests
         public ContactHelper Remove()
         {
             manager.Navigator.GoToHomePage();
-            ContactIsPresent();
             SelectContact();
             RemoveContact();
             manager.Navigator.GoToHomePage();

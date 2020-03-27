@@ -30,7 +30,6 @@ namespace WebAddressbookTests
         public GroupHelper Modify(int i, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
-            GroupIsPresent();
             SelectGroup(i);
             InitGroupModification();
             FillGroupForm(newData);
@@ -42,14 +41,13 @@ namespace WebAddressbookTests
         public GroupHelper Remove(int i)
         {
             manager.Navigator.GoToGroupsPage();
-            GroupIsPresent();
             SelectGroup(i);
             RemoveGroup();
             manager.Navigator.GoToGroupsPage();
             return this;
         }
 
-        private void GroupIsPresent()
+        public void GroupIsPresent()
         {
             if (IsElementPresent(By.Name("selected[]")) == false)
             {
