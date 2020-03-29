@@ -53,7 +53,6 @@ namespace WebAddressbookTests
             {
                 var group = new GroupData("name");
                 Create(group);
-                throw new Exception("Создать группу не удалось");
             }
         }
 

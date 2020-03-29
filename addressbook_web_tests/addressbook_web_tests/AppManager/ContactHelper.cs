@@ -51,7 +51,6 @@ namespace WebAddressbookTests
             {
                 var contact = new ContactData("firstname", "lastname");
                 Create(contact);
-                throw new Exception("Создать контакт не удалось");
             }
         }
 
