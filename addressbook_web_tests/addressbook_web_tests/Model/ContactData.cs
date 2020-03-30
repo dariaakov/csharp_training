@@ -43,8 +43,8 @@ namespace WebAddressbookTests
 
         public ContactData(string firstName, string lastName)
         {
-            this.firstName = firstName;
             this.lastName = lastName;
+            this.firstName = firstName;
         }
 
 
@@ -62,20 +62,20 @@ namespace WebAddressbookTests
                 return true;
             }
 
-            return (FirstName == otherFirstName.FirstName) 
-                 & (LastName == otherLastName.LastName);
+            return LastName == otherLastName.LastName
+                 & FirstName == otherFirstName.FirstName;
         }
 
 
         public override int GetHashCode()
         {
-            return (FirstName.GetHashCode()) 
+            return (LastName.GetHashCode())
                  & (LastName.GetHashCode());
         }
 
         public override string ToString()
         {
-            return ("firstName=" + FirstName) + ("lastName=" + LastName);
+            return LastName + " " + FirstName;
 
         }
 
@@ -87,8 +87,8 @@ namespace WebAddressbookTests
                 return 1;
             }
 
-            return (FirstName.CompareTo(otherFirstName.FirstName)) 
-                 & (LastName.CompareTo(otherLastName.LastName));
+            return FirstName.CompareTo(otherFirstName.FirstName) 
+                 & LastName.CompareTo(otherLastName.LastName);
         }
         public string FirstName
         {

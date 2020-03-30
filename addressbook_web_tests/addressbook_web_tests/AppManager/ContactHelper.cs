@@ -95,7 +95,7 @@ namespace WebAddressbookTests
         {
             List<ContactData> contacts = new List<ContactData>();
             manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.Name("selected[]"));
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
 
             foreach (IWebElement element in elements)
             {
