@@ -91,17 +91,31 @@ namespace WebAddressbookTests
             return this;
         }
 
+        private List<ContactData> contactCache = null;
+
         public List<ContactData> GetContactsList()
         {
-            List<ContactData> contacts = new List<ContactData>();
-            manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
-
-            foreach (IWebElement element in elements)
+            if (contactCache == null)
             {
-                contacts.Add(new ContactData(element.Text));
+                contactCache = new List<ContactData>();
+                manager.Navigator.GoToHomePage();
+                ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
+                foreach (IWebElement element in elements)
+                {
+                    contactCache.Add(new ContactData(element.Text)
+                    {
+                        Id = element.FindElement(By.TagName("input")).GetAttribute("value")
+                    });
+                }
+
             }
-            return contacts;
+            return new List<ContactData>(contactCache);
         }
+
+        public int GetContactsCount()
+        {
+            return driver.FindElements(By.Name("entry")).Count;
+        }
+
     }
 }
