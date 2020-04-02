@@ -99,10 +99,14 @@ namespace WebAddressbookTests
             {
                 contactCache = new List<ContactData>();
                 manager.Navigator.GoToHomePage();
-                ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
+                ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name='entry']"));
                 foreach (IWebElement element in elements)
                 {
-                    contactCache.Add(new ContactData(element.Text)
+                    var cells = element.FindElements(By.XPath("./td"));
+                    var lastname = cells[1].Text;
+                    var firstname = cells[2].Text;
+
+                    contactCache.Add(new ContactData(firstname, lastname)
                     {
                         Id = element.FindElement(By.TagName("input")).GetAttribute("value")
                     });
@@ -114,7 +118,7 @@ namespace WebAddressbookTests
 
         public int GetContactsCount()
         {
-            return driver.FindElements(By.Name("entry")).Count;
+            return driver.FindElements(By.XPath("//tr[@name='entry']")).Count;
         }
 
     }
