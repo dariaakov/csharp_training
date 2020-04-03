@@ -19,7 +19,7 @@ namespace WebAddressbookTests
             ContactData oldData = oldContacts[0];
 
             app.Contacts.ContactIsPresent();
-            app.Contacts.Modify(newData);
+            app.Contacts.Modify(0, newData);
 
             Assert.AreEqual(oldContacts.Count, app.Contacts.GetContactsCount());
 

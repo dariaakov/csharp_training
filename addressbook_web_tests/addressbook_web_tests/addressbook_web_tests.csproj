@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="ContactRemovalTests.cs" />
     <Compile Include="Tests\AuthTestBase.cs" />
+    <Compile Include="Tests\ContactInformationsTests.cs" />
     <Compile Include="Tests\ContactModificationTest.cs" />
     <Compile Include="Tests\GroupModificationTests.cs" />
     <Compile Include="Model\AccountData.cs" />

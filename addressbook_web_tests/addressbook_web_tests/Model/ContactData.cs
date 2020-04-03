@@ -65,5 +65,20 @@ namespace WebAddressbookTests
         public string LastName { get; set; }
 
         public string Id { get; set; }
+
+        public string Address { get; set; }
+
+        public string HomePhone { get; set; }
+
+        public string MobilePhone { get; set; }
+
+        public string WorkPhone { get; set; }
+
+        public string Email { get; set; }
+
+        public string Email2 { get; set; }
+
+        public string Email3 { get; set; }
+
     }
 }
