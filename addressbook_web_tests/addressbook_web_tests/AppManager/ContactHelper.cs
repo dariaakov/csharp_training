@@ -32,7 +32,7 @@ namespace WebAddressbookTests
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
-            manager.Navigator.GoToGroupsPage();
+            manager.Navigator.GoToHomePage();
             return this;
         }
 
@@ -58,12 +58,14 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
             //driver.SwitchTo().Alert().Accept();    почему-то аллерт не возникает и удаление происходит без подтверждения
+            contactCache = null;
             return this;
         }
 
         public ContactHelper SubmitContactModification()
         {
             driver.FindElement(By.Name("update")).Click();
+            contactCache = null;
             return this;
         }
 
@@ -76,6 +78,7 @@ namespace WebAddressbookTests
         public ContactHelper SubmitContactCreation()
         {
             driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
+            contactCache = null;
             return this;
         }
         public ContactHelper FillContactForm(ContactData contact)
