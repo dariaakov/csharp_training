@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WebAddressbookTests
 {
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
+        public string allPhones;
+
         public ContactData(string firstName)
         {
             FirstName = firstName;
@@ -15,8 +18,8 @@ namespace WebAddressbookTests
 
         public ContactData(string firstName, string lastName)
         {
-            LastName = lastName;
             FirstName = firstName;
+            LastName = lastName;
         }
 
 
@@ -32,8 +35,8 @@ namespace WebAddressbookTests
                 return true;
             }
 
-            return LastName == other.LastName && 
-                   FirstName == other.FirstName;
+            return FirstName == other.FirstName && 
+                   LastName == other.LastName;
         }
 
         public int CompareTo(ContactData other)
@@ -50,13 +53,13 @@ namespace WebAddressbookTests
 
         public override int GetHashCode()
         {
-            return LastName.GetHashCode()
-                 & FirstName.GetHashCode();
+            return FirstName.GetHashCode()
+                 & LastName.GetHashCode();
         }
 
         public override string ToString()
         {
-            return LastName + " " + FirstName;
+            return FirstName + " " + LastName;
 
         }
 
@@ -80,5 +83,38 @@ namespace WebAddressbookTests
 
         public string Email3 { get; set; }
 
+        public string AllPhones
+        {
+            get
+            {
+                if (allPhones != null)
+                {
+                    return allPhones;
+                }
+                else
+                {
+                    return (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
+                
+                
+                }
+            
+            }
+
+            set
+            {
+                allPhones = value;
+            }
+        
+        }
+
+        private string CleanUp(string phone)
+        {
+            if (phone == null || phone == "")
+            {
+                return "";
+            }
+
+            return Regex.Replace(phone, "[ -()]", "") + "\r\n";
+        }
     }
 }
