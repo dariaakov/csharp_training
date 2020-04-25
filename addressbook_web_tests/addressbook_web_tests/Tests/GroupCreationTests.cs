@@ -27,23 +27,23 @@ namespace WebAddressbookTests
         }
 
         [Test, TestCaseSource("RandomGroupDataProvider")]
-        public void GroupCreationTest(GroupData group)
+        public void GroupCreationTest(GroupData groups)
         {
 
             List<GroupData> oldGroups = app.Groups.GetGroupsList();
 
-            app.Groups.Create(group);
+            app.Groups.Create(groups);
 
             Assert.AreEqual(oldGroups.Count + 1, app.Groups.GetGroupsCount());
 
             List<GroupData> newGroups = app.Groups.GetGroupsList();
-            oldGroups.Add(group);
+            oldGroups.Add(groups);
             oldGroups.Sort();
             newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);
         }
 
-        [Test]
+        //[Test]
         public void BadNameGroupCreationTest()
         {
             GroupData group = new GroupData("a'a");
