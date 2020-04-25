@@ -10,6 +10,7 @@ namespace WebAddressbookTests
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         public string allPhones;
+        public string allEmails;
 
         public ContactData(string firstName)
         {
@@ -105,6 +106,30 @@ namespace WebAddressbookTests
                 allPhones = value;
             }
         
+        }
+
+        public string AllEmails
+        {
+            get
+            {
+                if (allEmails != null)
+                {
+                    return allEmails;
+                }
+                else
+                {
+                    return (CleanUp(Email) + CleanUp(Email2) + CleanUp(Email3)).Trim();
+
+
+                }
+
+            }
+
+            set
+            {
+                allEmails = value;
+            }
+
         }
 
         private string CleanUp(string phone)
