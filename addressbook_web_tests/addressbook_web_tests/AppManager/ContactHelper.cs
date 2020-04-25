@@ -96,6 +96,13 @@ namespace WebAddressbookTests
                   .FindElement(By.TagName("a")).Click();
         }
 
+        public void ViewContactInformationForm(int index)
+        {
+            driver.FindElements(By.Name("entry"))[index]
+                  .FindElements(By.TagName("td"))[6]
+                  .FindElement(By.TagName("a")).Click();
+        }
+
         private List<ContactData> contactCache = null;
 
         public List<ContactData> GetContactsList()
@@ -145,6 +152,22 @@ namespace WebAddressbookTests
             };
         }
 
+        public ContactData GetContactInformationFromViewForm(int index)
+        {
+            manager.Navigator.GoToHomePage();
+            ViewContactInformationForm(0);
+
+            string allInformations = driver.FindElement(By.CssSelector("div#content")).Text;
+
+            string firstName = "";
+            string lastName = "";
+
+            return new ContactData(firstName, lastName)
+            {
+                AllInformations = allInformations
+            };
+        }
+
         public ContactData GetContactInformationFromEditForm(int index)
         {
             manager.Navigator.GoToHomePage();
@@ -160,6 +183,23 @@ namespace WebAddressbookTests
             string email = driver.FindElement(By.Name("email")).GetAttribute("value");
             string email2 = driver.FindElement(By.Name("email2")).GetAttribute("value");
             string email3 = driver.FindElement(By.Name("email3")).GetAttribute("value");
+            
+            string adaptationPhone(string Phone)
+            {
+                if (Phone != "")
+                {
+                    if (Phone == homePhone || Phone == mobilePhone)
+                    {
+                        if (Phone == homePhone)
+                        {
+                            return "H:" + Phone + "\r\n";
+                        }
+                        return "M:" + Phone + "\r\n";
+                    }
+                    return "W:" + Phone + "\r\n";
+                }
+                return Phone;
+            }
 
             return new ContactData(firstName, lastName)
             {
@@ -169,9 +209,14 @@ namespace WebAddressbookTests
                 WorkPhone = workPhone,
                 Email = email,
                 Email2 = email2,
-                Email3 = email3
+                Email3 = email3,
+
+                AllInformations = firstName + lastName + "\r\n" + address + "\r\n\r\n" + adaptationPhone(homePhone) 
+                + adaptationPhone(mobilePhone) + adaptationPhone(workPhone) + "\r\n" + email + "\r\n" + email2 
+                + "\r\n" + email3
             };
         }
+        
 
         public int GetNumberOfSearchResults()
         {
