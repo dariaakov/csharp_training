@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{509F23A8-2209-49FE-B1CA-2B2FE7FC8CEC}</ProjectGuid>
+    <ProjectGuid>{EEEF5378-D670-45B9-AB68-008AEA104898}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>addressbook_test_data_generators</RootNamespace>
     <AssemblyName>addressbook-test-data-generators</AssemblyName>

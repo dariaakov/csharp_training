@@ -5,12 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "addressbook_web_tests", "addressbook_web_tests\addressbook_web_tests.csproj", "{932960AF-7D8E-4CF3-8BEF-77817B784924}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "addressbook-test-data-generators", "addressbook-test-data-generators\addressbook-test-data-generators.csproj", "{509F23A8-2209-49FE-B1CA-2B2FE7FC8CEC}"
-	ProjectSection(ProjectDependencies) = postProject
-		{932960AF-7D8E-4CF3-8BEF-77817B784924} = {932960AF-7D8E-4CF3-8BEF-77817B784924}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HEH", "HEH\HEH.csproj", "{E24EA276-4F5E-44DD-9DD5-3388AFD86B90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "addressbook-test-data-generators", "addressbook-test-data-generators\addressbook-test-data-generators.csproj", "{EEEF5378-D670-45B9-AB68-008AEA104898}"
 	ProjectSection(ProjectDependencies) = postProject
 		{932960AF-7D8E-4CF3-8BEF-77817B784924} = {932960AF-7D8E-4CF3-8BEF-77817B784924}
 	EndProjectSection
@@ -25,14 +20,10 @@ Global
 		{932960AF-7D8E-4CF3-8BEF-77817B784924}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{932960AF-7D8E-4CF3-8BEF-77817B784924}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{932960AF-7D8E-4CF3-8BEF-77817B784924}.Release|Any CPU.Build.0 = Release|Any CPU
-		{509F23A8-2209-49FE-B1CA-2B2FE7FC8CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{509F23A8-2209-49FE-B1CA-2B2FE7FC8CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{509F23A8-2209-49FE-B1CA-2B2FE7FC8CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{509F23A8-2209-49FE-B1CA-2B2FE7FC8CEC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E24EA276-4F5E-44DD-9DD5-3388AFD86B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E24EA276-4F5E-44DD-9DD5-3388AFD86B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E24EA276-4F5E-44DD-9DD5-3388AFD86B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E24EA276-4F5E-44DD-9DD5-3388AFD86B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEEF5378-D670-45B9-AB68-008AEA104898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEEF5378-D670-45B9-AB68-008AEA104898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEEF5378-D670-45B9-AB68-008AEA104898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEEF5378-D670-45B9-AB68-008AEA104898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
