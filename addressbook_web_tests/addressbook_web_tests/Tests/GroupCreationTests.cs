@@ -39,28 +39,6 @@ namespace WebAddressbookTests
                    .Deserialize(new StreamReader(@"groups.xml"));
         }
 
-        public static IEnumerable<GroupData> GroupDataFromExcelFile()
-        {
-            List<GroupData> groups = new List<GroupData>();
-            Excel.Application app = new Excel.Application();
-            Excel.Workbook wb = app.Workbooks.Open(Path.Combine(Directory.GetCurrentDirectory(), "@groups.xlsx"));
-            Excel.Worksheet sheet = wb.Sheets[1];
-            Excel.Range range = sheet.UsedRange;
-            for (int i = 1; i <= range.Rows.Count; i++)
-            {
-                groups.Add(new GroupData()
-                {
-                    Name = range.Cells[i, 1].Value,
-                    Header = range.Cells[i, 2].Value,
-                    Footer = range.Cells[i, 3].Value,
-
-                });
-            }
-            wb.Close();
-            app.Visible = false;
-            return groups;
-        }
-
         public static IEnumerable<GroupData> GroupDataFromJsonFile()
         {
             return JsonConvert.DeserializeObject<List<GroupData>>(
@@ -85,7 +63,7 @@ namespace WebAddressbookTests
             return groups;
         }
 
-        [Test, TestCaseSource("GroupDataFromExcelFile")]
+        [Test, TestCaseSource("GroupDataFromXmlFile")]
         public void GroupCreationTest(GroupData groups)
         {
 

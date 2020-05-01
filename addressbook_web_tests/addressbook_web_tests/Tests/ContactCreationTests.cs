@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Collections.Generic;
 using NUnit.Framework;
+using System.Xml.Serialization;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace WebAddressbookTests
 {
@@ -25,7 +28,38 @@ namespace WebAddressbookTests
             return contacts;
         }
 
-        [Test, TestCaseSource("RandomContactDataProvider")]
+        public static IEnumerable<ContactData> ContactDataFromXmlFile()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            return (List<ContactData>)
+                    new XmlSerializer(typeof(List<ContactData>))
+                   .Deserialize(new StreamReader(@"contacts.xml"));
+        }
+
+        public static IEnumerable<ContactData> ContactDataFromJsonFile()
+        {
+            return JsonConvert.DeserializeObject<List<ContactData>>(
+                   File.ReadAllText(@"contacts.json"));
+        }
+
+        public static IEnumerable<ContactData> ContactDataFromCsvFile()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            string[] lines = File.ReadAllLines(@"contacts.csv");
+            foreach (string l in lines)
+            {
+                string[] parts = l.Split(',');
+                contacts.Add(new ContactData(parts[0])
+                {
+                    LastName = parts[1]
+                });
+            }
+
+            return contacts;
+        }
+
+
+        [Test, TestCaseSource("ContactDataFromXmlFile")]
         public void ContactCreationTest(ContactData contacts)
         {
 
