@@ -104,7 +104,7 @@ namespace WebAddressbookTests
         {
             foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
             {
-                System.Console.Out.WriteLine(contact);
+                System.Console.Out.WriteLine(contact.Deprecated);
             }
         }
     }
