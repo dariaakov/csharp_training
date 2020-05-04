@@ -18,11 +18,12 @@ namespace WebAddressbookTests
             GroupData group = GroupData.GetAll()[0];
             List<ContactData> oldList = group.GetContacts();
             ContactData contact = ContactData.GetAll().Except(oldList).First();
-
+            
+            app.Contacts.AddContactToGroup(contact, group);
+            List<ContactData> newList = group.GetContacts();
             app.Contacts.RemoveContactFromGroup(contact, group);
 
-            List<ContactData> newList = ContactData.GetAll();
-            oldList.Remove(contact);
+            newList.Remove(contact);
             newList.Sort();
             oldList.Sort();
             Assert.AreEqual(oldList, newList);
